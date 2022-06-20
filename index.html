@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/style.css">
+  <title>myOwnTimer</title>
+</head>
+
+<body>
+  <div class="container">
+    <header id="header">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li id="navClock" class="nav__item"><i class="fa-regular fa-clock nav__icon"></i><span class="nav__text">clock</span></li>
+          <li id="navTimer" class="nav__item"><i class="fa-solid fa-stopwatch nav__icon"></i><span class="nav__text">stopwatch</span></li>
+          <li id="navStopwatch" class="nav__item"><i class="fa-solid fa-clock-rotate-left nav__icon"></i><span class="nav__text">timer</span>
+          </li>
+          <li id="navPomodoro" class="nav__item"><i class="fa-solid fa-business-time nav__icon"></i><span class="nav__text">pomodoro</span></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="time">
+        <h1 class="time__title"></h1>
+        <!-- <div class="time__numbers">
+        </div> -->
+
+        <article class="clock">
+          <div class="clock__time">
+            <span class="circle clock__item ">
+              <span id="hours" class="clock__item--number"></span>
+            </span>
+  
+            <span class="clock__item--dots">:</span>
+  
+            <span class="circle clock__item">
+              <span id="minutes" class=" clock__item--number"></span>
+            </span>
+  
+            <span class="clock__item--dots">:</span>
+  
+            <span class="circle clock__item">
+              <span id="seconds" class=" clock__item--number"></span>
+            </span>
+          </div>
+          <p class="clock__date"></p>
+        </article>
+
+        <article class="timer">
+          <div class="inputs">
+            <div class="ctrlGroup ctrlGroup--hours">
+              <input type="number" name="hrs" id="hrsTimer" class="input" min="0" value="00">
+              <label for="hrs" class="timerLabel">hours</label>
+            </div>
+            <div class="ctrlGroup">
+              <input type="number" name="mins" id="minsTimer" class="input" min="0" value="00">
+              <label for="mins" class="timerLabel">minutes</label>
+            </div>
+            <div class="ctrlGroup">
+              <input type="number" name="secs" id="secsTimer" class="input" min="0" value="00">
+              <label for="secs" class="timerLabel">seconds</label>
+            </div>
+          </div>
+          <button type="button" class="btn btnStartTimer">Start</button>
+          <button type="button" class="btn btnStopTimer">Stop</button>
+          <button type="button" class="btn btnResetTimer">Reset</button>
+        </article>
+
+        <!-- <article class="stopwatch">
+          <p>lo que aparece con el stopwatch</p>
+
+        </article>
+
+        <article class="pomodoro">
+          <p>lo que aparece con el pomodoro</p>
+
+        </article> -->
+
+        <p class="endMessage"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made with 🧠 by JARL</p>
+    </footer>
+
+  </div>
+
+  <script src="./script/nodes.js"></script>
+  <script src="./script/index.js"></script>
+</body>
+
+</html>

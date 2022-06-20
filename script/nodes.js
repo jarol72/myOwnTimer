@@ -1,0 +1,23 @@
+const d = document,
+  navClock = d.getElementById("navClock"),
+  navTimer = d.getElementById("navTimer"),
+  navStopwatch = d.getElementById("navStopwatch"),
+  navPomodoro = d.getElementById("navPomodoro"),
+  time = d.querySelector(".time"),
+  timeTitle = d.querySelector(".time__title"),
+  clock = d.querySelector(".clock"),
+  date = d.querySelector(".clock__date"),
+  timer = d.querySelector(".timer"),
+  /* stopwatch = d.querySelector(".stopwatch"),
+  pomodoro = d.querySelector(".pomodoro"), */
+  hours = d.getElementById("hours"),
+  minutes = d.getElementById("minutes"),
+  seconds = d.getElementById("seconds"),
+  dots = d.getElementsByClassName("clock__item--dots"),
+  hrsTimer = d.getElementById("hrsTimer"),
+  minsTimer = d.getElementById("minsTimer"),
+  secsTimer = d.getElementById("secsTimer"),
+  endMessage = d.querySelector(".endMessage"),
+  btnStartTimer = d.querySelector(".btnStartTimer"),
+  groupHours = d.querySelector(".ctrlGroup--hours");
+

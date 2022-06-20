@@ -1,0 +1,303 @@
+:root {
+  --clr-white: #dcdcff;
+  --clr-green: #00ffaa;
+  --clr-yellow: #ffff00;
+  --clr-red: #ff0f6d;
+  --clr-blue: #00fefc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  max-height: 100vh;
+  overflow: hidden;
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: var(--clr-white);
+  background-color: #28282a;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 4rem);
+}
+
+#header {
+  position: sticky;
+  top: 0;
+}
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  list-style: none;
+}
+
+.nav__item {
+  padding: .8rem 1.6rem;
+  font-size: 2rem;
+  text-align: center;
+  flex-basis: 13rem;
+  border-radius: .8rem;
+  opacity: .9;
+}
+
+.nav__item:hover {
+  opacity: 1;
+  box-shadow: 0 0 3rem var(--clr), inset 0 0 2rem var(--clr);
+}
+
+.nav__item:nth-of-type(1) {
+  --clr: var(--clr-blue);
+  color: var(--clr);
+  border: 1px solid var(--clr)
+}
+
+.nav__item:nth-of-type(2) {
+  --clr: var(--clr-green);
+  color: var(--clr);
+  border: 1px solid var(--clr)
+}
+
+.nav__item:nth-of-type(3) {
+  --clr: var(--clr-yellow);
+  color: var(--clr);
+  border: 1px solid var(--clr)
+}
+
+.nav__item:nth-of-type(4) {
+  --clr: var(--clr-red);
+  color: var(--clr);
+  border: 1px solid var(--clr)
+}
+
+.nav__text {
+  display: block;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: .2rem;
+  font-weight: 700;
+}
+
+.main {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 1rem 0;
+}
+
+.time {
+  width: 100%;
+  text-align: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: .4rem;
+}
+
+/* ************ CLOCK STYLES ************ */
+.clock {
+  font-size: 3rem;
+}
+
+.clock__time {
+  width: 100%;
+  margin: 1.6rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.clock__item {
+  position: relative;
+  width: 20%;
+}
+
+.clock__item--number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.clock__item--dots {
+  padding: 1rem;
+  transition: opacity 500ms;
+  animation: dotsFlashing 1s linear infinite;
+}
+
+@keyframes dotsFlashing {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#date {
+  font-size: 2rem;
+}
+
+/* ************ TIMER STYLES ************ */
+.inputs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.6rem 0;
+  caret-color: var(--clr-white);
+  outline: none;
+}
+
+.input {
+  display: inline;
+  max-width: 8rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--clr-white);
+  outline: none;
+}
+
+.ctrlGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.timerLabel {
+  text-transform: uppercase;
+}
+
+.btn {
+  margin: 1rem;
+  padding: .4rem 1.6rem;
+  font-size: 1.5rem;
+  color: var(--clr);
+  background-color: transparent;
+  border: 1px solid var(--clr);
+  border-radius: .8rem;
+}
+
+.btn:hover {
+  box-shadow: 0 0 3rem var(--clr), inset 0 0 1rem var(--clr);
+}
+
+.btn:disabled {
+  opacity: .4
+}
+
+.btnStartTimer {
+  --clr: var(--clr-green);
+}
+
+.btnStopTimer {
+  --clr: var(--clr-red);
+}
+
+.btnResetTimer {
+  --clr: var(--clr-yellow);
+}
+
+.endMessage {
+  --clr: var(--clr-red);
+  margin-top: 1rem;
+  height: 2rem;
+  color: var(--clr);
+  font-size: 2rem;
+  animation: flashing 1s linear infinite;
+}
+
+@keyframes flashing {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ************ STOPWATCH STYLES ************ */
+/* ************ POMODORO STYLES ************ */
+
+
+@media screen and (min-width: 768px) {
+  .time__title {
+    font-size: 3rem;
+  }
+  .clock__item {
+    width: 10%;
+  }
+  
+  .clock,
+  #date {
+    font-size: 4rem;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .time__title {
+    font-size: 4rem;
+  }
+  .clock__item {
+    position: relative;
+    width: 10%;
+  }
+  
+  .clock,
+  #date {
+    font-size: 5rem;
+  }
+  
+}
+
+@media screen and (min-width: 1440px) {
+  .time__title {
+    font-size: 5rem;
+  }
+  .clock__item {
+    width: 10%;
+  }
+  
+  .clock :is(.clock__time .clock__date) {
+    font-size: 7rem;
+  }
+  
+}
+
+.inactive {
+  display: none;
+}

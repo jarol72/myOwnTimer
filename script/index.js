@@ -1,13 +1,42 @@
-let interval;
+let interval,
+  paused = false,
+  customHours = '00',
+  customMinutes = '00',
+  customSeconds = '00';
+
+const setInitialValues = () => {
+  hrsTimer.value = '00';
+  minsTimer.value = '00';
+  secsTimer.value = '00';
+
+  if (timeTitle.textContent === "Pomodoro") minsTimer.value = '25';
+}
+
+const setCustomValues = (iniHrs, iniMin, iniSec) => {
+  customHours = iniHrs;
+  customMinutes = iniMin;
+  customSeconds = iniSec;
+}
 
 const resets = () => {
   endMessage.textContent = '';
   btnStartTimer.disabled = false;
-  hrsTimer.value = "00";
-  minsTimer.value = "00";
-  secsTimer.value = "00";
 
-  if(timeTitle.textContent === "Pomodoro") minsTimer.value = "25";
+  switch (timeTitle.textContent) {
+    case 'Timer':
+      hrsTimer.value = formatValue(customHours);
+      minsTimer.value = formatValue(customMinutes);
+      secsTimer.value = formatValue(customSeconds);
+      break;
+
+    case 'Pomodoro':
+      minsTimer.value = formatValue(customMinutes);
+      secsTimer.value = formatValue(customSeconds);
+      break;
+
+    default:
+      setInitialValues();
+  }
 }
 
 const formatValue = (value) => {
@@ -27,7 +56,7 @@ const getTime = () => {
   hours.textContent = hh.toString().padStart(2, '0');
   minutes.textContent = mm.toString().padStart(2, '0');
   seconds.textContent = ss.toString().padStart(2, '0');
-  date.textContent = new Date().toLocaleDateString('es-co', { weekday:"long", day:"numeric", month:"short", year:"numeric"}) 
+  date.textContent = new Date().toLocaleDateString('es-co', { weekday: "long", day: "numeric", month: "short", year: "numeric" })
 }
 
 const showClock = () => {
@@ -45,7 +74,7 @@ const showTimer = () => {
   clock.classList.add('inactive');
   timer.classList.remove('inactive');
   stopInterval();
-  resets()
+  setInitialValues();
 }
 
 const showStopwatch = () => {
@@ -54,7 +83,7 @@ const showStopwatch = () => {
   clock.classList.add('inactive');
   timer.classList.remove('inactive');
   stopInterval();
-  resets()
+  setInitialValues();
 }
 
 const showPomodoro = () => {
@@ -63,7 +92,7 @@ const showPomodoro = () => {
   clock.classList.add('inactive');
   timer.classList.remove('inactive');
   stopInterval();
-  resets()
+  setInitialValues();
   minsTimer.value = '25';
 }
 
@@ -71,6 +100,9 @@ const startTimer = () => {
   hrs = parseInt(hrsTimer.value);
   mins = parseInt(minsTimer.value);
   secs = parseInt(secsTimer.value);
+  
+  if(!paused) setCustomValues(hrs, mins, secs);
+
   endMessage.textContent = '';
   btnStartTimer.disabled = true;
 
@@ -85,7 +117,7 @@ const startTimer = () => {
         secs = 59;
         mins -= 1;
       }
-      
+
       if (mins < 0 && hrs) {
         mins = 59;
         hrs -= 1;
@@ -98,39 +130,37 @@ const startTimer = () => {
   }, 1000);
 }
 
-const stopTimer = () => {
-  console.log("Stop Timer");
+const pauseTimer = () => {
+  paused = true;
   clearInterval(currentTimer);
-
 
   switch (timeTitle.textContent) {
     case 'Timer':
-      console.log(timeTitle.textContent);
       endMessage.textContent = 'Timer paused';
       break;
 
     case 'Stopwatch':
-      console.log(timeTitle.textContent);
       endMessage.textContent = 'Stopwatch paused';
       break;
 
     case 'Pomodoro':
-      console.log(timeTitle.textContent);
       endMessage.textContent = 'Pomodoro paused';
       break;
 
     default:
       endMessage = '';
   }
-
+  
   btnStartTimer.disabled = false;
 }
-
 
 const startStopwatch = () => {
   hrs = parseInt(hrsTimer.value);
   mins = parseInt(minsTimer.value);
   secs = parseInt(secsTimer.value);
+
+  setCustomValues(hrs, mins, secs);
+
   endMessage.textContent = '';
   btnStartTimer.disabled = true;
 
@@ -155,6 +185,9 @@ const startStopwatch = () => {
 const startPomodoro = () => {
   mins = parseInt(minsTimer.value);
   secs = parseInt(secsTimer.value);
+  debugger;
+  if(!paused) setCustomValues('00', mins, secs);
+
   endMessage.textContent = '';
   btnStartTimer.disabled = true;
 
@@ -179,32 +212,28 @@ const startPomodoro = () => {
 d.addEventListener("DOMContentLoaded", showClock);
 
 d.addEventListener("click", (e) => {
-  if (e.target.matches("#navClock, .fa-clock")) {
+  if (e.target.matches("#navClock, .fa-clock, .nav__text--clock")) {
     showClock();
-    console.log("Clock");
   }
-  if (e.target.matches("#navTimer, .fa-stopwatch")) {
+  if (e.target.matches("#navTimer, .fa-stopwatch, .nav__text--stopwatch")) {
     clearInterval(time);
     showStopwatch();
-    console.log("Stopwatch");
   }
-  if (e.target.matches("#navStopwatch, .fa-clock-rotate-left")) {
+  if (e.target.matches("#navStopwatch, .fa-clock-rotate-left, .nav__text--timer")) {
     clearInterval(time);
     showTimer();
-    console.log("Timer");
   }
-  if (e.target.matches("#navPomodoro, .fa-business-time")) {
+  if (e.target.matches("#navPomodoro, .fa-business-time, .nav__text--pomodoro")) {
     clearInterval(time);
     showPomodoro();
-    console.log("Pomodoro");
   }
   if (e.target.matches(".btnStartTimer")) {
     if (timeTitle.textContent === "Timer") startTimer();
     if (timeTitle.textContent === "Stopwatch") startStopwatch();
     if (timeTitle.textContent === "Pomodoro") startPomodoro();
   }
-  if (e.target.matches(".btnStopTimer")) {
-    stopTimer();
+  if (e.target.matches(".btnPauseTimer")) {
+    pauseTimer();
   }
   if (e.target.matches(".btnResetTimer")) {
     clearInterval(currentTimer);
@@ -217,3 +246,4 @@ d.addEventListener("change", (e) => {
     e.target.value = formatValue(e.target.value);
   }
 });
+

@@ -20,11 +20,14 @@
     <header id="header">
       <nav class="nav">
         <ul class="nav__list">
-          <li id="navClock" class="nav__item"><i class="fa-regular fa-clock nav__icon"></i><span class="nav__text">clock</span></li>
-          <li id="navTimer" class="nav__item"><i class="fa-solid fa-stopwatch nav__icon"></i><span class="nav__text">stopwatch</span></li>
-          <li id="navStopwatch" class="nav__item"><i class="fa-solid fa-clock-rotate-left nav__icon"></i><span class="nav__text">timer</span>
+          <li id="navClock" class="nav__item"><i class="fa-regular fa-clock nav__icon"></i><span class="nav__text nav__text--clock">clock</span></li>
+
+          <li id="navTimer" class="nav__item"><i class="fa-solid fa-stopwatch nav__icon"></i><span class="nav__text nav__text--stopwatch">stopwatch</span></li>
+
+          <li id="navStopwatch" class="nav__item"><i class="fa-solid fa-clock-rotate-left nav__icon"></i><span class="nav__text nav__text--timer">timer</span>
           </li>
-          <li id="navPomodoro" class="nav__item"><i class="fa-solid fa-business-time nav__icon"></i><span class="nav__text">pomodoro</span></li>
+
+          <li id="navPomodoro" class="nav__item"><i class="fa-solid fa-business-time nav__icon"></i><span class="nav__text nav__text--pomodoro">pomodoro</span></li>
         </ul>
       </nav>
     </header>
@@ -32,9 +35,7 @@
     <main class="main">
       <section class="time">
         <h1 class="time__title"></h1>
-        <!-- <div class="time__numbers">
-        </div> -->
-
+        
         <article class="clock">
           <div class="clock__time">
             <span class="circle clock__item ">
@@ -59,32 +60,22 @@
         <article class="timer">
           <div class="inputs">
             <div class="ctrlGroup ctrlGroup--hours">
-              <input type="number" name="hrs" id="hrsTimer" class="input" min="0" value="00">
+              <input type="number" name="hrs" id="hrsTimer" class="input" min="0" max="24" value="00">
               <label for="hrs" class="timerLabel">hours</label>
             </div>
             <div class="ctrlGroup">
-              <input type="number" name="mins" id="minsTimer" class="input" min="0" value="00">
+              <input type="number" name="mins" id="minsTimer" class="input" min="0" max="59" value="00">
               <label for="mins" class="timerLabel">minutes</label>
             </div>
             <div class="ctrlGroup">
-              <input type="number" name="secs" id="secsTimer" class="input" min="0" value="00">
+              <input type="number" name="secs" id="secsTimer" class="input" min="0" max="59" value="00">
               <label for="secs" class="timerLabel">seconds</label>
             </div>
           </div>
           <button type="button" class="btn btnStartTimer">Start</button>
-          <button type="button" class="btn btnStopTimer">Stop</button>
+          <button type="button" class="btn btnPauseTimer">Stop</button>
           <button type="button" class="btn btnResetTimer">Reset</button>
         </article>
-
-        <!-- <article class="stopwatch">
-          <p>lo que aparece con el stopwatch</p>
-
-        </article>
-
-        <article class="pomodoro">
-          <p>lo que aparece con el pomodoro</p>
-
-        </article> -->
 
         <p class="endMessage"></p>
       </section>

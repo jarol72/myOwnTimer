@@ -218,7 +218,7 @@ body {
   --clr: var(--clr-green);
 }
 
-.btnStopTimer {
+.btnPauseTimer {
   --clr: var(--clr-red);
 }
 

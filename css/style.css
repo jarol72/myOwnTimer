@@ -22,12 +22,12 @@ html {
 body {
   position: relative;
   min-height: 100vh;
-  max-height: 100vh;
+  max-height: hidden
   padding: 1rem;
   font-size: 1.6rem;
   color: var(--clr-white);
   background-color: #28282a;
-  overflow: hidden;
+   /*overflow: hidden;*/
 }
 
 .container {

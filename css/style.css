@@ -27,7 +27,7 @@ body {
   font-size: 1.6rem;
   color: var(--clr-white);
   background-color: #28282a;
-   /*overflow: hidden;*/
+  overflow: hidden;
 }
 
 .container {

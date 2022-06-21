@@ -177,6 +177,7 @@ body {
 .input {
   display: inline;
   max-width: 8rem;
+  padding-right: .2rem;
   font-size: 3rem;
   font-weight: 700;
   color: var(--clr-white);

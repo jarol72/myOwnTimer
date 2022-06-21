@@ -12,6 +12,12 @@ const setInitialValues = () => {
   if (timeTitle.textContent === "Pomodoro") minsTimer.value = '25';
 }
 
+const checkCustomValues = () => {
+  if(hrsTimer.value > 24)  hrsTimer.value = 24;
+  if(minsTimer.value > 59) minsTimer.value = 59;
+  if(secsTimer.value > 59) secsTimer.value = 59;
+}
+
 const setCustomValues = (iniHrs, iniMin, iniSec) => {
   customHours = iniHrs;
   customMinutes = iniMin;
@@ -97,11 +103,12 @@ const showPomodoro = () => {
 }
 
 const startTimer = () => {
+  checkCustomValues();
   hrs = parseInt(hrsTimer.value);
   mins = parseInt(minsTimer.value);
   secs = parseInt(secsTimer.value);
-  
-  if(!paused) setCustomValues(hrs, mins, secs);
+
+  if (!paused) setCustomValues(hrs, mins, secs);
 
   endMessage.textContent = '';
   btnStartTimer.disabled = true;
@@ -150,11 +157,12 @@ const pauseTimer = () => {
     default:
       endMessage = '';
   }
-  
+
   btnStartTimer.disabled = false;
 }
 
 const startStopwatch = () => {
+  checkCustomValues();
   hrs = parseInt(hrsTimer.value);
   mins = parseInt(minsTimer.value);
   secs = parseInt(secsTimer.value);
@@ -185,8 +193,8 @@ const startStopwatch = () => {
 const startPomodoro = () => {
   mins = parseInt(minsTimer.value);
   secs = parseInt(secsTimer.value);
-  debugger;
-  if(!paused) setCustomValues('00', mins, secs);
+
+  if (!paused) setCustomValues('00', mins, secs);
 
   endMessage.textContent = '';
   btnStartTimer.disabled = true;

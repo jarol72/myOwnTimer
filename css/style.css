@@ -22,7 +22,7 @@ html {
 body {
   position: relative;
   min-height: 100vh;
-  max-height: hidden
+  max-height: hidden;
   padding: 1rem;
   font-size: 1.6rem;
   color: var(--clr-white);
